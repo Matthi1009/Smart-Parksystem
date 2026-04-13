@@ -1,0 +1,69 @@
+#include <LiquidCrystal.h>
+
+// LCD Pins: RS=12, E=11, D4=5, D5=4, D6=3, D7=2
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+const int trigPin = 9;
+const int echoPin = 10;
+const int ledGruen = 7;
+const int ledRot = 8;
+
+int autoZaehler = 0;
+bool blockiert = false;
+const int schwelle = 200; // Jetzt auf 200cm gesetzt
+
+void setup() {
+  lcd.begin(16, 2);
+  
+  // Test-Nachricht: Wenn du das nicht siehst, liegt es an der Verkabelung!
+  lcd.print("System Start...");
+  delay(1000);
+  lcd.clear();
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(ledGruen, OUTPUT);
+  pinMode(ledRot, OUTPUT);
+
+  lcd.setCursor(0, 0);
+  lcd.print("Distanz:");
+  lcd.setCursor(0, 1);
+  lcd.print("Autos:");
+}
+
+void loop() {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+
+  long dauer = pulseIn(echoPin, HIGH);
+  int distanz = dauer * 0.034 / 2;
+
+  // Anzeige Distanz
+  lcd.setCursor(9, 0);
+  lcd.print("    "); 
+  lcd.setCursor(9, 0);
+  lcd.print(distanz);
+  lcd.print("cm");
+
+  // Logik mit 200cm Schwelle
+  if (distanz > 0 && distanz < schwelle) {
+    digitalWrite(ledRot, HIGH);
+    digitalWrite(ledGruen, LOW);
+
+    if (!blockiert) {
+      autoZaehler++;
+      lcd.setCursor(7, 1);
+      lcd.print(autoZaehler);
+      blockiert = true; 
+    }
+  } else {
+    digitalWrite(ledRot, LOW);
+    digitalWrite(ledGruen, HIGH);
+    blockiert = false; 
+  }
+
+  delay(200);
+}
