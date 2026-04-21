@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/htl-leoben-logo.png" alt="HTL Leoben" width="480"/>
+  <img src="Screenshots/htl-leoben-logo.png" alt="HTL Leoben" width="480"/>
 </p>
 
 ---
@@ -63,7 +63,7 @@ The goal of this project is a smart IoT parking system that works as follows:
 The flowchart below illustrates the full logic of the parking system, from entry through barrier control to exit detection and display update.
 
 <p align="center">
-  <img src="images/flowchart.png" alt="System Flowchart" width="600"/>
+  <img src="Screenshots/flowchart.png" alt="System Flowchart" width="600"/>
 </p>
 
 **Flow summary:**
@@ -79,7 +79,7 @@ The flowchart below illustrates the full logic of the parking system, from entry
 > ⚠️ **Note:** The simulation uses an **Arduino UNO** as a stand-in for the ESP-32 since Tinkercad does not natively support the ESP-32. The wiring logic is equivalent.
 
 <p align="center">
-  <img src="images/tinkercad-breadboard.png" alt="Tinkercad Breadboard Layout" width="680"/>
+  <img src="Screenshots/tinkercad-breadboard.png" alt="Tinkercad Breadboard Layout" width="680"/>
 </p>
 
 The breadboard layout shows the wiring of the Arduino UNO, the LCD display with contrast potentiometer, the HC-SR04 ultrasonic sensor, and indicator LEDs (red/green).
@@ -91,7 +91,7 @@ The breadboard layout shows the wiring of the Arduino UNO, the LCD display with 
 The full circuit schematic, generated in Tinkercad, showing all component connections including resistors, LEDs, LCD interface, and the ultrasonic sensor.
 
 <p align="center">
-  <img src="images/tinkercad-schematic.png" alt="Circuit Schematic" width="740"/>
+  <img src="Screenshots/tinkercad-schematic.png" alt="Circuit Schematic" width="740"/>
 </p>
 
 **Key connections:**
@@ -108,7 +108,7 @@ The full circuit schematic, generated in Tinkercad, showing all component connec
 The physical prototype was built on a breadboard in the lab. It includes the RFID-RC522 module, ultrasonic sensor, servo motor (acting as the barrier gate), and status LEDs.
 
 <p align="center">
-  <img src="images/prototype.jpeg" alt="Physical Prototype" width="620"/>
+  <img src="Screenshots/prototype.jpeg" alt="Physical Prototype" width="620"/>
 </p>
 
 ---
