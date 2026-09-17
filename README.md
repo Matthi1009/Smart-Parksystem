@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Screenshots/htl-leoben-logo.png" alt="HTL Leoben" width="480"/>
+  <img src="Screenshots/htl-leobn-logo.png" alt="HTL Leoben" width="480"/>
 </p>
 
 ---
