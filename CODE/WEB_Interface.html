@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Smart Parking Dashboard</title>
     <style>
         :root { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --primary: #3b82f6; --success: #22c55e; --danger: #ef4444; }
@@ -9,6 +10,7 @@
         .container { max-width: 800px; width: 100%; }
         .header { background: var(--card); padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border: 1px solid #334155; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 600px) { body { padding: 16px; } .grid { grid-template-columns: 1fr; } }
         .card { background: var(--card); padding: 30px; border-radius: 12px; text-align: center; border: 1px solid #334155; }
         .big-val { font-size: 4rem; font-weight: bold; margin: 10px 0; color: var(--primary); }
         .btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: bold; }
@@ -51,6 +53,11 @@
         let port;
         const connectBtn = document.getElementById('connectBtn');
         const log = document.getElementById('log');
+
+        if (!('serial' in navigator)) {
+            connectBtn.disabled = true;
+            addLog("Dieser Browser unterstützt Web Serial nicht – bitte Chrome oder Edge verwenden.");
+        }
 
         connectBtn.addEventListener('click', async () => {
             try {
@@ -95,10 +102,16 @@
                             }
                         }
                     }
+                } catch (e) {
+                    addLog("Verbindung unterbrochen: " + e);
+                    break;
                 } finally {
                     reader.releaseLock();
                 }
             }
+            document.getElementById('connShow').innerText = "Nicht verbunden";
+            document.getElementById('connShow').classList.remove('on');
+            connectBtn.disabled = false;
         }
 
         function updateUI(data) {
@@ -122,7 +135,10 @@
 
         function addLog(msg) {
             const time = new Date().toLocaleTimeString();
-            log.innerHTML = `<div><span style="color: #64748b;">[${time}]</span> ${msg}</div>` + log.innerHTML;
+            const row = document.createElement('div');
+            row.innerHTML = `<span style="color: #64748b;">[${time}]</span> `;
+            row.appendChild(document.createTextNode(msg));
+            log.prepend(row);
         }
     </script>
 </body>

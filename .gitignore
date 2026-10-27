@@ -1,0 +1,13 @@
+# Office-Temp- und Sperrdateien
+~$*
+~WRL*.tmp
+*.tmp
+
+# Betriebssystem
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor / Build
+.vscode/
+build/
