@@ -16,7 +16,7 @@
 </p>
 
 > **Lab Protocol** · Subject: Lab · Class: 2IT · HTL Leoben
-> **Author:** Alexander Wetzlhütter · **Date:** 13.04.2026
+> **Authors:** Alexander Wetzlhütter, Matthias Pichler · **Date:** 13.04.2026
 
 <p align="center">
   <img src="Screenshots/final-front.jpeg" alt="Finished parking system" width="680"/>
